@@ -6,10 +6,10 @@
  */
 
 // ruta del proyecto ( ruta hecha con virtual host )
-//define("DOCUMENT_ROOT","http://test1/");
+define("DOCUMENT_ROOT","http://test1/");
 
 // ruta alterna para correr en windows con Xammpp
-define("DOCUMENT_ROOT","http://localhost/test1/");
+// define("DOCUMENT_ROOT","http://localhost/test1/");
 
  // ruta de los assets del proyecto
  define("CSSDIR", DOCUMENT_ROOT."css/");

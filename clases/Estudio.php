@@ -20,7 +20,6 @@ class Estudio {
                 'mensaje' => 'El campo "Escuela" está vacio.'
             ) );
         }
-
         if( !$this->validarFecha( $this->FechaInicio ) ){
             $error = TRUE;
             array_push( $errors, array(
@@ -28,7 +27,6 @@ class Estudio {
                 'mensaje' => 'La fecha inicio es incorrecta o está incompleta'
             ) );
         }
-
         if( !$this->validarFecha( $this->FechaFin ) ){
             $error = TRUE;
             array_push( $errors, array(
@@ -36,7 +34,6 @@ class Estudio {
                 'mensaje' => 'La fecha fin es incorrecta o está incompleta'
             ) );
         }
-
         if( !$this->validarGradoEstudio( $this->GradoEstudio ) ){
             $error = TRUE;
             array_push( $errors, array(
@@ -44,7 +41,6 @@ class Estudio {
                 'mensaje' => 'El valor para Grado de Estudio es incorrecto o no se proporcionó'
             ) );
         }
-
         if( !$error ){
             // sí pasamos la validación
             return TRUE;

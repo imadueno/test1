@@ -5,7 +5,8 @@
  * para realizar las validaciones y realizar el guardado del empleado
  */
 
-if(isset( $_POST['empleado'] )){
+ echo $_FILES;
+/* if(isset( $_POST['empleado'] )){
 
     require_once( "../clases/Empleado.php" );
     $nuevoEmpleado = new Empleado();
@@ -18,7 +19,7 @@ if(isset( $_POST['empleado'] )){
     $nuevoEmpleado->setFechaNacimiento($_POST['empleado']['FechaNacimiento']);
     $nuevoEmpleado->setNumeroEmpleado($_POST['empleado']['NumeroEmpleado']);
     $nuevoEmpleado->setNumeroPension($_POST['empleado']['NumeroPension']);
-    $nuevoEmpleado->setFotografia(1);
+    $nuevoEmpleado->setFotografia($_FILES['empleado']['Fotografia']);
     $nuevoEmpleado->setCURP($_POST['empleado']['CURP']);
     $nuevoEmpleado->setRFC($_POST['empleado']['RFC']);
     $nuevoEmpleado->setEstadoCivil($_POST['empleado']['EstadoCivil']);
@@ -100,6 +101,6 @@ function crearTxtEmpleado( $informacionEmpleado ){
     fclose($fp);
 
     return $nombreArchivo;
-}
+} */
 
 ?>

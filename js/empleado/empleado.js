@@ -100,20 +100,41 @@ $(function(){
                 'empleado' : oFormulario,
                 'estudios' : arrayEstudiosEmpleado
             }
+
             let oRespuesta = cargar_ajax.run_server_ajax( 'helpers/validar_empleado.php', oParams );
             console.log(oRespuesta);
 
+
+
             if( oRespuesta.error ){
+
                 customAlert( 'danger', 'Oops..!', 'Algo salió mal. Verifica la información de empleado' );
             }else{
 
                 // se creo empleado correctamente
-                customAlert( 'success', oRespuesta.mensaje, 'Se registró expediente de empleado N.' + oRespuesta.NombreArchivo );
-                setTimeout(function(){
-
-                    window.location(base_url);
-
-                }, 5000);
+                Swal.fire({
+                    title: oRespuesta.mensaje,
+                    html: 'Se registró expediente de empleado N.' + oRespuesta.NombreArchivo,
+                    icon: 'success',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ver expediente'
+                  }).then((result) => {
+                    if (result.value) {
+                        console.log('si entra');
+                        window.location.href = base_url + 'vistas/perfil_empleado.php?IdEmpleado=' + oRespuesta.NombreArchivo;
+                    }else{
+                        Swal.fire(
+                            'De acuerdo!',
+                            'Recuerda que puedes acceder después al archivo del empleado desde la sección "Ver Empleados"',
+                            'success'
+                        );
+                        setTimeout(function(){
+                            window.location.href = base_url;
+                        }, 4000)
+                    }
+                });
             }
         }
         
@@ -253,15 +274,14 @@ $(function(){
     // =========================================================================
     // sweet alert personalizable
     // =========================================================================
-    function customAlert( tipo = 'success', titulo = null, texto = null ){
+    function customAlert( tipo = 'success', titulo = null, texto = null, timer = 2000 ){
         Swal.fire({
             icon: tipo,
             title: titulo,
             html: texto,
-            timer: 2000
+            timer: timer
         })
     }
-
 
 
 });
