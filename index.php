@@ -32,6 +32,8 @@ $aGradoEstudio  = $oCatalogo->GetCatGradoEstudio();
         <link href="<?php echo CSSDIR; ?>select2.min.css" rel="stylesheet">
         <!-- air date picker -->
         <link href="<?php echo CSSDIR; ?>datepicker.min.css" rel="stylesheet">
+        <!-- sweet alert -->
+        <link href="<?php echo CSSDIR; ?>sweetalert2.min.css" rel="stylesheet">
         <!-- site files --> 
         <link href="<?php echo CSSDIR; ?>empleado/style.css" rel="stylesheet">
     </head>
@@ -142,7 +144,13 @@ $aGradoEstudio  = $oCatalogo->GetCatGradoEstudio();
                             <div class="form-group">
                                 <label for="Fotografia" class="col-sm-4 control-label">Fotografia</label>
                                 <div class="col-sm-8">
-                                    <input type="file" class="" id="Fotografia" name="Fotografia" placeholder="">
+                                    <input type="file" id="Fotografia" name="Fotografia" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-8 col-md-offset-4">
+                                    <img id="imagen-placeholder" src="img/silueta.png" alt="default image">
                                 </div>
                             </div>
 
@@ -376,9 +384,41 @@ $aGradoEstudio  = $oCatalogo->GetCatGradoEstudio();
                                 </div>
                             </div>
 
+                            <div class="estudios-buttons">
+                                <button type="button" id="limpiar" class="btn">Limpiar campos</button>
+                                <button type="button" id="agregarEstudio" class="btn btn-primary">Agregar estudio</button>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-8 col-md-offset-4">
+                                <div class="panel panel-default">
+                                    <!-- Default panel contents -->
+                                    <div class="panel-heading">Estudios agregados</div>
+                                        <div class="panel-body">
+                                            Listado de estudios para agregarse al perfil del empleado. Puede eliminar un elemento dentro de la tabla si así lo desea.
+                                        </div>
+
+                                        <!-- Table -->
+                                        <table class="table" id="tabla-estudio">
+                                            <thead>
+                                                <tr>
+                                                    <th>Escuela</th>
+                                                    <th>Grado Estudio</th>
+                                                    <th>Fecha Inicio</th>
+                                                    <th>Fecha Fin</th>
+                                                    <th>Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- contenido dinamico -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- botones finales del formulario -->
                             <div class="form-buttons">
-                                <button type="button" id="limpiar" class="btn">Limpiar</button>
                                 <button type="submit" class="btn btn-success">Registrar empleado</button>
                             </div>
                             
@@ -435,6 +475,8 @@ $aGradoEstudio  = $oCatalogo->GetCatGradoEstudio();
         <!-- air date picker -->
         <script src="<?php echo JSDIR; ?>datepicker.min.js"></script>
         <script src="<?php echo JSDIR; ?>datepicker.es.js"></script>
+        <!--sweet alert -->
+        <script src="<?php echo JSDIR; ?>sweetalert2.min.js"></script>
         <!-- archivos del sistema -->
         <script>
             // declaramos la variable base_url que usará "ajax.server.js"

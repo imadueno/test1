@@ -25,7 +25,20 @@ body {
   margin-top: 40px;
 }
 
-.form-buttons > button:first-child{
+/* previsualizar la imagen cargada*/
+img {
+  max-width: 150px;
+}
+
+.estudios-buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+  margin-bottom: 25px;
+}
+
+.estudios-buttons > button:first-child{
   margin-right: 10px;
 }
 
@@ -75,4 +88,10 @@ label{
   position: sticky;
   box-shadow: 0 2px 13px rgba(0, 0, 0, 0.2);
   transition: 0.3s;
+}
+
+
+/* input-error*/
+.input-error{
+  border: 2px solid #d9534f;
 }
