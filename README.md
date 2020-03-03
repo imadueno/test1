@@ -12,3 +12,8 @@ En mi caso tengo dos _constantes_, una para Windows y otra para Ubuntu ( utiliza
 Windows = `define("DOCUMENT_ROOT","http://localhost/test1/");`
 
 Ubuntu = `define("DOCUMENT_ROOT","http://test1/");`
+
+### Permisos de escritura en Ubuntu
+Si el proyecto está siendo ejecutado en Ubuntu y los archivos de empleado no se guarden, probablemente sea un problema de permisos, para ello otorgaremos permisos a la carpeta del proyecto.
+`sudo chmod -R 777 /var/www/test1/*`
+
