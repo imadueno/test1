@@ -43,7 +43,7 @@ $(function(){
     // Cargar imagen preview cuando se carga una imagen en input.file
     // =========================================================================
     $('#Fotografia').on('change', function(){
-        readURL(this);
+        readURL(this);  
     });
 
     // =========================================================================
@@ -87,8 +87,36 @@ $(function(){
 
         e.preventDefault();
         let aFormulario = $('#formulario_empleado').serializeArray();
-        let respuesta   = cargar_ajax.run_server_ajax( 'helpers/validar_empleado.php', aFormulario );
-        console.log( respuesta );
+        let oFormulario = cargar_ajax.array_to_obj( aFormulario );
+
+        if( arrayEstudiosEmpleado.length == 0){
+
+            // si no hay ningun grado de estudios registrado
+            customAlert('warning', 'Ops..!', 'Debe agregar por lo menos un grado de estudios valido.');
+        }else{
+
+            // generamos los parametros a enviar por ajax
+            let oParams = {
+                'empleado' : oFormulario,
+                'estudios' : arrayEstudiosEmpleado
+            }
+            let oRespuesta = cargar_ajax.run_server_ajax( 'helpers/validar_empleado.php', oParams );
+            console.log(oRespuesta);
+
+            if( oRespuesta.error ){
+                customAlert( 'danger', 'Oops..!', 'Algo salió mal. Verifica la información de empleado' );
+            }else{
+
+                // se creo empleado correctamente
+                customAlert( 'success', oRespuesta.mensaje, 'Se registró expediente de empleado N.' + oRespuesta.NombreArchivo );
+                setTimeout(function(){
+
+                    window.location(base_url);
+
+                }, 5000);
+            }
+        }
+        
     });
 
     // =========================================================================
@@ -140,11 +168,6 @@ $(function(){
     });
 
     // =========================================================================
-    // verificamos si en la tabla estudios hay contenido
-    // =========================================================================
-    
-
-    // =========================================================================
     // Proceso de validación para sección de Estudios en el formulario
     // =========================================================================
     $('#agregarEstudio').on('click', function(){
@@ -173,7 +196,7 @@ $(function(){
             oResult.errores.forEach(function(input){ $("#" + input.campo ).addClass('input-error'); });
             setTimeout(function(){ 
                 oResult.errores.forEach(function(input){ $("#" + input.campo ).removeClass('input-error'); });
-            }, 5000);
+            }, 3000);
             customAlert( 'error', 'Algo salió mal', errorResult );
 
         }else{
@@ -181,17 +204,30 @@ $(function(){
             // repintar la tabla cada vez y si esta vacia pintar el mensaje donde no hay ningun dato
             arrayEstudiosEmpleado.push( oParams );
 
-            // strign que se inserta en la tabla html
-            htmlOutput = '<tr><td>'+Escuela+'</td><td>'+GradoEstudio+'</td>';
-            htmlOutput += '<td>'+FechaInicio+'</td><td>'+FechaFin+'</td><td><span class="btn btn-danger btn-xs">X</span></td><tr>';
+            let table = $('#tabla-estudio');
+            table.find("tbody tr").remove();
+            arrayEstudiosEmpleado.forEach(function(estudio, index){
 
-            $('#tabla-estudio').append(htmlOutput);
+                htmlOutput = '<tr><td>'+estudio.Escuela+'</td><td>'+estudio.GradoEstudio+'</td>';
+                htmlOutput += '<td>'+estudio.FechaInicio+'</td><td>'+estudio.FechaFin+'</td><td>';
+                htmlOutput += '<span class="btn btn-danger btn-xs borrar" data-index="'+index+'">X</span></td><tr>';
+                table.append( htmlOutput );
+            });
+
+            // limpiar campos 
             $('#Escuela').val('');
-            $('#GradoEstudio').val(0);
+            $('#GradoEstudio').val('');
             $('#FechaInicio').val('');
             $('#FechaFin').val('');
         }
 
+    });
+
+    // =========================================================================
+    // funcion que nos retorna html de opciones dependientes del padre del domicilio
+    // =========================================================================
+    $("[data-index]").on('click', function(){
+        console.log('ok');
     });
 
     // =========================================================================

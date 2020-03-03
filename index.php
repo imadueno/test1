@@ -59,7 +59,7 @@ $aGradoEstudio  = $oCatalogo->GetCatGradoEstudio();
 
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#about">Alta de empleado</a></li>
-                        <li><a href="#contact">Ver empleados</a></li>
+                        <li><a id="ver_empleado" href="#">Ver empleados</a></li>
                     </ul>
                 </div>
             </div>
@@ -352,7 +352,7 @@ $aGradoEstudio  = $oCatalogo->GetCatGradoEstudio();
                             <div class="form-group">
                                 <label for="Escuela" class="col-sm-4 control-label">Escuela<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="Escuela" name="Escuela" placeholder="" required="true">
+                                    <input type="text" class="form-control" id="Escuela" name="Escuela" placeholder="">
                                 </div>
                             </div>
 
@@ -360,7 +360,7 @@ $aGradoEstudio  = $oCatalogo->GetCatGradoEstudio();
                                 <label for="GradoEstudio" class="col-sm-4 control-label">Grado de estudio<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
 
-                                    <select class="form-control" id="GradoEstudio" name="GradoEstudio" required="true">
+                                    <select class="form-control" id="GradoEstudio" name="GradoEstudio">
                                         <option selected="true" disabled="true">Seleccione...</option>
                                         <?php foreach( $aGradoEstudio as $index ): ?>
                                         <option value="<?php echo $index['Id']; ?>"><?php echo $index['Descripcion']; ?></option>
@@ -373,14 +373,14 @@ $aGradoEstudio  = $oCatalogo->GetCatGradoEstudio();
                             <div class="form-group">
                                 <label for="FechaInicio" class="col-sm-4 control-label">Fecha Inicio<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="FechaInicio" name="FechaInicio" placeholder="" required="true">
+                                    <input type="text" class="form-control" id="FechaInicio" name="FechaInicio" placeholder="">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="FechaFin" class="col-sm-4 control-label">Fecha Fin<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="FechaFin" name="FechaFin" placeholder="" required="true">
+                                    <input type="text" class="form-control" id="FechaFin" name="FechaFin" placeholder="">
                                 </div>
                             </div>
 
@@ -419,7 +419,7 @@ $aGradoEstudio  = $oCatalogo->GetCatGradoEstudio();
 
                             <!-- botones finales del formulario -->
                             <div class="form-buttons">
-                                <button type="submit" class="btn btn-success">Registrar empleado</button>
+                                <button type="submit" class="btn btn-success">Finalizar Registro de Empleado</button>
                             </div>
                             
 

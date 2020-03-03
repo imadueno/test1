@@ -5,38 +5,38 @@
  * para realizar las validaciones y realizar el guardado del empleado
  */
 
-if(isset( $_POST )){
+if(isset( $_POST['empleado'] )){
 
     require_once( "../clases/Empleado.php" );
     $nuevoEmpleado = new Empleado();
 
     // asignamos los valores
-    $nuevoEmpleado->setApellidoPaterno($_POST['ApellidoPaterno']);
-    $nuevoEmpleado->setApellidoMaterno($_POST['ApellidoMaterno']);
-    $nuevoEmpleado->setNombre($_POST['Nombre']);
-    $nuevoEmpleado->setSexo($_POST['Sexo']);
-    $nuevoEmpleado->setFechaNacimiento($_POST['FechaNacimiento']);
-    $nuevoEmpleado->setNumeroEmpleado($_POST['NumeroEmpleado']);
-    $nuevoEmpleado->setNumeroPension($_POST['NumeroPension']);
+    $nuevoEmpleado->setApellidoPaterno($_POST['empleado']['ApellidoPaterno']);
+    $nuevoEmpleado->setApellidoMaterno($_POST['empleado']['ApellidoMaterno']);
+    $nuevoEmpleado->setNombre($_POST['empleado']['Nombre']);
+    $nuevoEmpleado->setSexo($_POST['empleado']['Sexo']);
+    $nuevoEmpleado->setFechaNacimiento($_POST['empleado']['FechaNacimiento']);
+    $nuevoEmpleado->setNumeroEmpleado($_POST['empleado']['NumeroEmpleado']);
+    $nuevoEmpleado->setNumeroPension($_POST['empleado']['NumeroPension']);
     $nuevoEmpleado->setFotografia(1);
-    $nuevoEmpleado->setCURP($_POST['CURP']);
-    $nuevoEmpleado->setRFC($_POST['RFC']);
-    $nuevoEmpleado->setEstadoCivil($_POST['EstadoCivil']);
-    $nuevoEmpleado->setTipoSangre($_POST['TipoSangre']);
-    $nuevoEmpleado->setEstatura($_POST['Estatura']);
-    $nuevoEmpleado->setPeso($_POST['Peso']);
-    $nuevoEmpleado->setComplexion($_POST['Complexion']);
-    $nuevoEmpleado->setDiscapacidad($_POST['Discapacidad']);
-    $nuevoEmpleado->setPais($_POST['Pais']);
-    $nuevoEmpleado->setEstado($_POST['Estado']);
-    $nuevoEmpleado->setMunicipio($_POST['Municipio']);
-    $nuevoEmpleado->setLocalidad($_POST['Localidad']);
-    $nuevoEmpleado->setColonia($_POST['Colonia']);
-    $nuevoEmpleado->setCodigoPostal($_POST['CodigoPostal']);
-    $nuevoEmpleado->setTipoVialidad($_POST['TipoVialidad']);
-    $nuevoEmpleado->setNombreVialidad($_POST['NombreVialidad']);
-    $nuevoEmpleado->setNumeroExterior($_POST['NumeroExterior']);
-    $nuevoEmpleado->setNumeroInterior($_POST['NumeroInterior']);
+    $nuevoEmpleado->setCURP($_POST['empleado']['CURP']);
+    $nuevoEmpleado->setRFC($_POST['empleado']['RFC']);
+    $nuevoEmpleado->setEstadoCivil($_POST['empleado']['EstadoCivil']);
+    $nuevoEmpleado->setTipoSangre($_POST['empleado']['TipoSangre']);
+    $nuevoEmpleado->setEstatura($_POST['empleado']['Estatura']);
+    $nuevoEmpleado->setPeso($_POST['empleado']['Peso']);
+    $nuevoEmpleado->setComplexion($_POST['empleado']['Complexion']);
+    $nuevoEmpleado->setDiscapacidad($_POST['empleado']['Discapacidad']);
+    $nuevoEmpleado->setPais($_POST['empleado']['Pais']);
+    $nuevoEmpleado->setEstado($_POST['empleado']['Estado']);
+    $nuevoEmpleado->setMunicipio($_POST['empleado']['Municipio']);
+    $nuevoEmpleado->setLocalidad($_POST['empleado']['Localidad']);
+    $nuevoEmpleado->setColonia($_POST['empleado']['Colonia']);
+    $nuevoEmpleado->setCodigoPostal($_POST['empleado']['CodigoPostal']);
+    $nuevoEmpleado->setTipoVialidad($_POST['empleado']['TipoVialidad']);
+    $nuevoEmpleado->setNombreVialidad($_POST['empleado']['NombreVialidad']);
+    $nuevoEmpleado->setNumeroExterior($_POST['empleado']['NumeroExterior']);
+    $nuevoEmpleado->setNumeroInterior($_POST['empleado']['NumeroInterior']);
 
                 
     $informacionEmpleado = array(
@@ -72,7 +72,7 @@ if(isset( $_POST )){
             'NumeroExterior' => $nuevoEmpleado->getNumeroExterior(),
             'NumeroInterior' => $nuevoEmpleado->getNumeroInterior()
         ),
-        'estudios' => 'pendiente'
+        'estudios' => $_POST['estudios']
     );
 
 
