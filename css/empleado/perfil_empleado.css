@@ -1,0 +1,31 @@
+.body-perfil{
+    margin-top: 80px;
+    margin-bottom: 100px;
+}
+
+#jsonfile{
+    display: none;
+    visibility: hidden;
+}
+
+table{
+    width: 100%;
+}
+
+table tr:first-child(){
+    width: 30%;
+}
+
+.flex-item{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.flex-item p:first-child {
+    flex: 3;
+}
+
+.flex-item p:nth-child(2){
+    flex: 6;
+}
